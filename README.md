@@ -1,2 +1,5 @@
-# lineage_iflytek_ud710
-The device tree I generated with aospdtgen project for chip1/2 devices | 科大讯飞展讯芯片学习机（ud710芯片组，已分类型）设备树
+# Chip1-ud710
+
+## Detail | 简介
+
+适用机型：T10/T20（不包括T20Pro，那个是瑞芯微机型）/（课堂版）c8全系机型

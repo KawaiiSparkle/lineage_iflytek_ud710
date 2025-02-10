@@ -1,0 +1,85 @@
+//
+// Copyright (C) 2025 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Init scripts
+sh_binary {
+    name: "log_to_csv.sh",
+    src: "bin/log_to_csv.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "loading.sh",
+    src: "bin/loading.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "para.sh",
+    src: "bin/para.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "total.sh",
+    src: "bin/total.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "AwPacail.sh",
+    src: "bin/AwPacail.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "mmitp.sh",
+    src: "bin/mmitp.sh",
+    vendor: true,
+}
+
+// Init configuration files
+prebuilt_etc {
+    name: "init.common.rc",
+    src: "etc/init.common.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ram.rc",
+    src: "etc/init.ram.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.storage.rc",
+    src: "etc/init.storage.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ud710_2h10.rc",
+    src: "etc/init.ud710_2h10.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ud710_2h10.usb.rc",
+    src: "etc/init.ud710_2h10.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+// fstab
+prebuilt_etc {
+    name: "fstab.enableswap",
+    src: "etc/fstab.enableswap",
+    vendor: true,
+}

@@ -1,0 +1,65 @@
+import /vendor/etc/init/hw/init.common.rc
+
+on init
+   start watchdogd
+#ifdef VENDOR_EDIT
+# bwwei add for motor origin value, 20210605
+    setprop vendor.motor.sensor.info 0
+    setprop vendor.motor.sensor.getposition_lock 0
+# endif VENDOR_EDIT
+
+on post-fs-data
+    setprop fpga.target.enable 1
+    setprop debug.delaytime.min 10
+    setprop debug.delaytime.mid 100
+    setprop debug.delaytime.max 1000
+    setprop debug.android_watchdog.disable 1
+    mkdir /mnt/vendor/productinfo/initupm 0775 radio radio
+
+on post-fs
+    insmod /vendor/lib/modules/ssd20xx_ts.ko
+
+#modify permission for voicetrigger dev
+    chown system  audio /dev/rt5512
+    chmod 660     /dev/rt5512
+
+on boot
+    #bug 1136941 orca+roc1 high speed packet filling
+    write /proc/sys/net/core/rmem_default 8388608
+# block I/O vm.dirty parameters
+    write /proc/sys/vm/dirty_background_bytes 4194304
+    write /proc/sys/vm/dirty_bytes  52428800
+
+on property:ro.boot.auto.chipid=UD710-AA
+    write /sys/power/wake_lock temp
+
+# Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
+service watchdogd /sbin/watchdogd 10 30
+	class core
+	oneshot
+	seclabel u:r:watchdogd:s0
+
+# Set wifi mtu value, iflytek start, chaoji2, 20200909
+on property:vendor.iflytek.mtu.config=1
+    write /sys/devices/platform/21040064.sprd-wlan/net/wlan0/mtu ${persist.vendor.iflytek.mtu}
+# iflytek end
+
+# Begin: iflytek vsync opt, chaoji2, 20201224
+on property:vendor.iflytek.vsync.opt=1
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "performance"
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor "performance"
+
+on property:vendor.iflytek.vsync.opt=0
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "schedutil"
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor "schedutil"
+# End: iflytek vsync opt, chaoji2, 20201224
+
+# ifdef VENDOR_EDIT
+# xhmeng2 add for camera overhead shot mode or normal mode, 20210501
+on property:vendor.iflytek.camera.overhead.shot=1
+    write /sys/stspin220/motor_node 1
+
+on property:vendor.iflytek.camera.overhead.shot=0
+    write /sys/stspin220/motor_node 0
+# endif VENDOR_EDIT
+
