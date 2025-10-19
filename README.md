@@ -8,7 +8,7 @@
 
 另外，欢迎各位大佬开Issue，提PR！
 
-联系我们（QQ）：[点击链接加入群聊【IFLYTEK-BOOM】](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=xFsPRaaBkFPy2Gxfu1oZ-WMFHvG9a5uD&authKey=tnAg%2FynW6yxLI%2BnSWHG7O56msdkXVQxBnUBfURem53m5DhpyNFgZOMwAyh5KXfMM&noverify=0&group_code=766720774)
+联系我们（QQ）：欢迎加入群聊【IFLYTEK-LEAKING】1034226525，或者联系mc2681820773@163.com / restcgj@qq.com （都可以回消息，第二个是备用转接）
 # 0x01 使用方法
 
 Chip1机型：
